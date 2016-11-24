@@ -13,6 +13,7 @@
   <script>
 
 
+
 function setup() {
 window.addEventListener("devicelight", function (event) {
 
@@ -21,11 +22,71 @@ var luminosity = event.value;
 
 
 });
-
+fullScreen();
 }
 
 function draw() {
-  ellipse(50, 50, 80, 80);
+var angleRadians;
+  background(255, 255, 255);
+  frameRate(30);
+  
+  // Let's pick an angle 0 to 90 degrees based on the mouse position
+  var angleDegrees = 30; //(mouseX / (float) width) * 90f; 
+  // Convert angle from degrees to radians
+  angleRadians = radians(angleDegrees);
+  
+  //size of initial trunk
+ var trunkHeight =  330f;
+  //amount of green 
+  var colour = 32;
+  //thickness of initial trunk
+  var thickness = 20f;
+  // Start the tree from the bottom of the screen
+  translate(width/2,height);
+  // Draw a line 330 pixels
+  line(0,0,0,-trunkHeight);
+  strokeWeight(thickness);
+  stroke(64, colour, 0);
+ 
+  // Move to the end of that line
+  translate(0,-trunkHeight);
+  // Start the recursive branching!
+  
+  branch(trunkHeight, colour, thickness);
+ 
+  
+}
+
+function branch(var trunkHeight, var colour, var thickness ) {
+  // Each branch will be 2/3rds the size of the previous one
+  
+  trunkHeight *= 0.70;
+  colour +=10;
+  thickness *= 0.70;
+  
+  // All recursive functions must have an exit condition!!!!
+  // Here, ours is when the length of the branch is 2 pixels or less
+  if (trunkHeight > 2) {
+    push();// Save the current state of transformation (i.e. where are we now)
+    rotate(angleRadians);   // Rotate by theta
+    line(0, 0, 0, -trunkHeight);  // Draw the branch
+    strokeWeight(thickness);
+    stroke(64, colour, 0);
+    translate(0, -trunkHeight); // Move to the end of the branch
+      branch(trunkHeight, colour, thickness); 
+    pop();// Whenever we get back here, we "pop" in order to restore the previous matrix state
+        // Ok, now call myself to draw two new branches!!
+     //Repeat the same thing, only branch off to the "left" this time!
+     
+    push();
+   rotate(-angleRadians);
+    line(0, 0, 0, -trunkHeight);
+    strokeWeight(thickness);
+    stroke(64, colour,  0);
+    translate(0, -trunkHeight);
+     branch(trunkHeight, colour, thickness);
+    pop();
+
 }
 
   
