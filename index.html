@@ -15,13 +15,6 @@ var angleRadians;
 
 
 function setup() {
-window.addEventListener("devicelight", function (event) {
-
-
-var luminosity = event.value;
-
-
-});
 
 createCanvas(640, 360);
 
@@ -33,7 +26,7 @@ function draw() {
   frameRate(30);
   
   // Let's pick an angle 0 to 90 degrees based on the mouse position
-  var angleDegrees = 0; //(mouseX / (float) width) * 90f; 
+  var angleDegrees = 30; //(mouseX / (float) width) * 90f; 
   // Convert angle from degrees to radians
   angleRadians = radians(angleDegrees);
   
