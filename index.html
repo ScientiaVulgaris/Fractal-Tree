@@ -37,14 +37,13 @@ function draw() {
   //thickness of initial trunk
   var thickness = 20;
   // Start the tree from the bottom of the screen
-  translate(0,800);
-  // Draw a line 330 pixels
-  line(0,0,0,-trunkHeight);
+  translate(width/2, height);
+  /
   strokeWeight(thickness);
   stroke(64, colour, 0);
  
   // Move to the end of that line
-  translate(0,-trunkHeight);
+  
   // Start the recursive branching!
   
   branch(trunkHeight, colour, thickness);
@@ -58,6 +57,9 @@ function branch( trunkHeight,  colour,  thickness ) {
   trunkHeight *= 0.70;
   colour +=10;
   thickness *= 0.70;
+// Draw a line 330 pixels
+  line(0,0,0,-trunkHeight);
+  translate(0,-trunkHeight);
   
   // All recursive functions must have an exit condition!!!!
   // Here, ours is when the length of the branch is 2 pixels or less
