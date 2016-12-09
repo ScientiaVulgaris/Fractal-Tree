@@ -12,10 +12,6 @@
 <script src="js/p5.js"></script>
   <script>
 var angleRadians;
-window.addEventListener("devicelight", function (event) {
- luminosity = event.value;
-alert(luminosity);
-});
 
 
 
@@ -26,6 +22,11 @@ createCanvas(1920, 1080);
 }
 
 function draw() {
+window.addEventListener("devicelight", function (event) {
+ luminosity = event.value;
+alert(luminosity);
+});
+
 
   background(255, 255, 255);
   frameRate(30);
