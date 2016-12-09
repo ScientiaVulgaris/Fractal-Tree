@@ -34,7 +34,7 @@ function draw() {
   var angleDegrees = 30; //(mouseX / (float) width) * 90f; 
   // Convert angle from degrees to radians
   angleRadians = radians(angleDegrees);
-  luminosity = 3;
+  var growPercent = luminosity/100;
   
   //size of initial trunk
  var trunkHeight =  300;
@@ -64,11 +64,11 @@ function draw() {
 function branch( trunkHeight,  colour,  thickness, growPercent ) {
   // Each branch will be 2/3rds the size of the previous one
   
-  trunkHeight *= 0.66;
+  trunkHeight = trunkHeight*0.66*growPercent;
   colour +=10;
   thickness *= 0.66;
 // Draw a line 330 pixels
-  line(0,0,0,-trunkHeight);
+  line(0,0,0,-trunkHeight*growPercent);
   translate(0,-trunkHeight);
   
   // All recursive functions must have an exit condition!!!!
