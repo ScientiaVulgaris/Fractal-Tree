@@ -25,6 +25,7 @@ function draw() {
 window.addEventListener("devicelight", function (event) {
  luminosity = event.value;
 alert(luminosity);
+var growPercent = luminosity/100;
 });
 
 
@@ -35,7 +36,7 @@ alert(luminosity);
   var angleDegrees = 30; //(mouseX / (float) width) * 90f; 
   // Convert angle from degrees to radians
   angleRadians = radians(angleDegrees);
-  var growPercent = luminosity/100;
+  
   
   //size of initial trunk
  var trunkHeight =  300;
